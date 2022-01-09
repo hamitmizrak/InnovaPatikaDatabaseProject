@@ -16,7 +16,6 @@ public class AdminDao implements  IDaoConnection<AdminDto>{
             PreparedStatement preparedStatement=connection.prepareStatement(sql);
             preparedStatement.setString(1,adminDto.getAdminName());
             preparedStatement.setString(2,adminDto.getAdminSurname());
-
             int rowEfected=preparedStatement.executeUpdate();
             if(rowEfected>0){
                 System.out.println(AdminDao.class+" başarılı başarılı");
@@ -26,8 +25,8 @@ public class AdminDao implements  IDaoConnection<AdminDto>{
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-
     }
+
 
     @Override
     public void update(AdminDto adminDto) {
