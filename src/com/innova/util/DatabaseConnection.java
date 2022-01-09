@@ -14,7 +14,7 @@ public class DatabaseConnection  extends  DatabaseInformation{
     private String userPassword=this.getUserPassword();
 
     //Singleton Design pattern
-    private  DatabaseConnection instance;
+    private static  DatabaseConnection instance;
 
     //private constructor
     private DatabaseConnection() {
@@ -31,20 +31,29 @@ public class DatabaseConnection  extends  DatabaseInformation{
 
     //amaçım eğer bağlantı varsa onu kullanmak
     //eğer bağlantı kapatılmış veya bağlantı yoksa instance yapmak
-    public  DatabaseConnection getInstance() {
+    public static DatabaseConnection getInstance() {
         try {
             if(instance==null)
-                this.instance=new DatabaseConnection();
+                instance=new DatabaseConnection();
             else if(instance.connection.isClosed())
-                this.instance=new DatabaseConnection();
+                instance=new DatabaseConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return instance;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public DatabaseConnection setConnection(Connection connection) {
+        this.connection = connection;
+        return this;
+    }
+
     public static void main(String[] args) {
-        DatabaseConnection databaseConnection=new DatabaseConnection();
+        //DatabaseConnection databaseConnection=new DatabaseConnection();
     }
 
 }
