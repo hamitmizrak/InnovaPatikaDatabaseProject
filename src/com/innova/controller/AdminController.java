@@ -23,16 +23,19 @@ public class AdminController implements IDaoConnection<AdminDto> {
 
     @Override
     public void update(AdminDto adminDto) {
-
+        adminDao=new AdminDao();
+        adminDao.update(adminDto);
     }
 
     @Override
     public void delete(AdminDto adminDto) {
-
+        adminDao=new AdminDao();
+        adminDao.delete(adminDto);
     }
 
     @Override
     public ArrayList<AdminDto> list() {
-        return null;
+        adminDao=new AdminDao();
+        return adminDao.list();
     }
 }

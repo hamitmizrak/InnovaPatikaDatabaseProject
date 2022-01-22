@@ -12,5 +12,6 @@ public class AdminMainTest {
         adminDto.setAdminName("Furkan");
         adminDto.setAdminSurname("Nisancı");
         adminController.create(adminDto);
+
     }
 }
