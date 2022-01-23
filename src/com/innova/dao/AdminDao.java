@@ -3,13 +3,14 @@ package com.innova.dao;
 import com.innova.dto.AdminDto;
 import lombok.extern.log4j.Log4j2;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@Log4j2
+
 public class AdminDao implements  IDaoConnection<AdminDto>{
 
     @Override
@@ -21,9 +22,9 @@ public class AdminDao implements  IDaoConnection<AdminDto>{
             preparedStatement.setString(2,adminDto.getAdminSurname());
             int rowEfected=preparedStatement.executeUpdate();
             if(rowEfected>0){
-                System.out.println(AdminDao.class+" başarılı başarılı");
+                System.out.println(AdminDao.class+" ekleme başarılı");
             }else{
-                System.out.println(AdminDao.class+" başarısız başarısız");
+                System.out.println(AdminDao.class+" ekleme başarısız");
             }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
@@ -34,7 +35,7 @@ public class AdminDao implements  IDaoConnection<AdminDto>{
     @Override
     public void update(AdminDto adminDto) {
         try(Connection connectionUpdate=getInterfaceConnection()) {
-            String sqlUpdate="update admin admin_name=?,admin_surname=?  where  admin_id=?";
+            String sqlUpdate="update admin set  admin_name=?,admin_surname=?  where  admin_id=?";
             PreparedStatement preparedStatementUpdate=connectionUpdate.prepareStatement(sqlUpdate);
             preparedStatementUpdate.setString(1,adminDto.getAdminName());
             preparedStatementUpdate.setString(2,adminDto.getAdminSurname());
@@ -58,9 +59,9 @@ public class AdminDao implements  IDaoConnection<AdminDto>{
             preparedStatementDelete.setInt(1,adminDto.getAdminID());
             int rowEfected=preparedStatementDelete.executeUpdate();
             if(rowEfected>0){
-                System.out.println(AdminDao.class+" güncelleme başarılı");
+                System.out.println(AdminDao.class+" silme başarılı");
             }else{
-                System.out.println(AdminDao.class+" güncelle başarısız");
+                System.out.println(AdminDao.class+" silme başarısız");
             }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
